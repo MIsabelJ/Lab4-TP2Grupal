@@ -5,19 +5,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class Empresa {
+public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEmpresa;
-    private String nombre;
-    private String razonSocial;
-    private int cuil;
+    private int idCategoria;
+    private String denominacion;
     @OneToMany
-    private List<Sucursal> sucursales;
+    private List<Categoria> subcategoria;
+    @OneToMany
+    private List<ArticuloManufacturado> articuloManufacturados;
 }

@@ -5,19 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class Empresa {
+public class Provincia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEmpresa;
+    private int idProvincia;
     private String nombre;
-    private String razonSocial;
-    private int cuil;
-    @OneToMany
-    private List<Sucursal> sucursales;
+    @ManyToOne
+    private Pais pais;
 }

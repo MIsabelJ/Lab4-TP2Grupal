@@ -1,23 +1,20 @@
 package com.TPGrupal2.Productos.Entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class Empresa {
+public class Pais {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEmpresa;
+    private int idPais;
     private String nombre;
-    private String razonSocial;
-    private int cuil;
-    @OneToMany
-    private List<Sucursal> sucursales;
 }
