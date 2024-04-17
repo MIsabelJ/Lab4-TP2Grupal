@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Domicilio {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idDomicilio;
+public class Domicilio extends Base{
     private String calle;
     private int numero;
     private int cp;

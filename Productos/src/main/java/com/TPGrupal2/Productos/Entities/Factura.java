@@ -14,10 +14,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Factura {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Factura extends Base{
     private LocalDate fechaFacturacion;
     private int mpMerchantOrderId;
     private String mpPreferenceId;

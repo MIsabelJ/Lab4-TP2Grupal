@@ -12,10 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Imagen {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idImagen;
+public class Imagen extends Base{
     private String denominacion;
 
 }

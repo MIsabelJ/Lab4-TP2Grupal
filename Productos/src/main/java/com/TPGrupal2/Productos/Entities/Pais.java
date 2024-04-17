@@ -12,9 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Pais {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idPais;
+public class Pais extends Base{
     private String nombre;
 }

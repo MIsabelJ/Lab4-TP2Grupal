@@ -11,10 +11,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ArticuloManufacturado {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idArticuloManufacturado;
+public class ArticuloManufacturado extends Base{
     private String denominacion;
     private String descripcion;
     private double precioVenta;

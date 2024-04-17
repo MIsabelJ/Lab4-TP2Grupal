@@ -11,10 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ArticuloInsumo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idArticuloInsumo;
+public class ArticuloInsumo extends Base{
+
     private String denominacion;
     private double precioCompra;
     private double precioVenta;

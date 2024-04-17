@@ -13,10 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Promocion {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idPromocion;
+public class Promocion extends Base{
     private String demonimacion;
     private LocalDate fechaDesde;
     private LocalDate fechaHasta;

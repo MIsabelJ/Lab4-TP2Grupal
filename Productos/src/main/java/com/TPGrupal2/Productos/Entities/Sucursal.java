@@ -12,10 +12,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Sucursal {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idSucursal;
+public class Sucursal extends Base{
     private String nombre;
     private LocalDate horarioApertura;
     private LocalDate horarioCierre;

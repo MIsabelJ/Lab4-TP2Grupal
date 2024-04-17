@@ -12,9 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class UnidadMedida {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUnidadMedida;
-
+public class UnidadMedida extends Base{
+    private String denominacion;
 }

@@ -12,10 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Categoria {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCategoria;
+public class Categoria extends Base{
     private String denominacion;
     @OneToMany
     private List<Categoria> subcategoria;

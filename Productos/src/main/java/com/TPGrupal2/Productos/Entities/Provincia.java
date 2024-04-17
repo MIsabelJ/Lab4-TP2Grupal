@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Provincia {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idProvincia;
+public class Provincia extends Base{
     private String nombre;
     @ManyToOne
     private Pais pais;

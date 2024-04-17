@@ -11,10 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Empresa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEmpresa;
+public class Empresa extends Base{
     private String nombre;
     private String razonSocial;
     private int cuil;

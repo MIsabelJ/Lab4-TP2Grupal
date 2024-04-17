@@ -14,10 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Pedido {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Pedido extends Base{
     private LocalTime horaEstimadaFinalizado;
     private double total;
     private double totalCosto;
