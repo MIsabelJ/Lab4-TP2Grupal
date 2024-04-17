@@ -8,14 +8,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Imagen {
+public class Factura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idImagen;
-    private String denominacion;
-
+    private Long id;
+    private LocalDate fechaFacturacion;
+    private int mpMerchantOrderId;
+    private String mpPreferenceId;
+    private String mpPaymentType;
+    private FormaPagoEnum formaPago;
+    private double totalVenta;
 }

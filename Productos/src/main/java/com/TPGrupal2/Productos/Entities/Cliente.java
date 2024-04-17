@@ -7,17 +7,20 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Empresa {
+public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEmpresa;
+    private Long id;
     private String nombre;
-    private String razonSocial;
-    private int cuil;
+    private String apellido;
+    private String telefono;
+    private String email;
     @OneToMany
-    private List<Sucursal> sucursales;
+    private List<Pedido> pedidos;
+    @OneToOne
+    private Usuario usuario;
 }
