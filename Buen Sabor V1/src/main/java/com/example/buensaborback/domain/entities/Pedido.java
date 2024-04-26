@@ -29,18 +29,24 @@ public class Pedido extends Base{
     private FormaPago formaPago;
     private LocalDate fechaPedido;
 
+    // RELACIONES
+
+    // Cliente
     @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
+
+    // Domicilio
+    @ManyToOne
+    @JoinColumn(name = "domicilio_id")
     private Domicilio domicilio;
 
+    // Factura
     @OneToOne
     private Factura factura;
 
-
-    @OneToMany(cascade = CascadeType.ALL)
-    //SE AGREGA EL JOIN COLUMN PARA QUE JPA NO CREE LA TABLA INTERMEDIA EN UNA RELACION ONE TO MANY
-    //DE ESTA MANERA PONE EL FOREIGN KEY 'pedido_id' EN LA TABLA DE LOS MANY
-    @JoinColumn(name = "pedido_id")
-    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    @Builder.Default
+    // Detalles Pedidos
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pedido")
+    @Builder.Default // SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
     private Set<DetallePedido> detallePedidos = new HashSet<>();
 }

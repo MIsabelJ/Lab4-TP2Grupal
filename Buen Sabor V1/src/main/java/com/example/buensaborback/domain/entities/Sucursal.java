@@ -20,27 +20,27 @@ public class Sucursal extends Base{
     private LocalTime horarioApertura;
     private LocalTime horarioCierre;
 
+    // RELACIONES
+
+    // Domicilio
     @OneToOne
     private Domicilio domicilio;
 
+    // Empresa
+    @ManyToOne
+    @JoinColumn(name = "empresa_id")
+    private Empresa empresa;
 
-
-
+    // Categorias
     @ManyToMany
-    //SE AGREGA EL JOIN TABLE PARA QUE JPA CREE LA TABLA INTERMEDIA EN UNA RELACION MANY TO MANY
     @JoinTable(name = "sucursal_categoria",
             joinColumns = @JoinColumn(name = "sucursal_id"),
-            inverseJoinColumns = @JoinColumn(name = "categoria_id"))
-    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    @Builder.Default
+            inverseJoinColumns = @JoinColumn(name = "categoria_id")) // SE AGREGA EL JOIN TABLE PARA QUE JPA CREE LA TABLA INTERMEDIA EN UNA RELACION MANY TO MANY
+    @Builder.Default // SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
     private Set<Categoria> categorias = new HashSet<>();
 
-
-    @OneToMany
-    //SE AGREGA EL JOIN COLUMN PARA QUE JPA NO CREE LA TABLA INTERMEDIA EN UNA RELACION ONE TO MANY
-    //DE ESTA MANERA PONE EL FOREIGN KEY 'sucursal_id' EN LA TABLA DE LOS MANY
-    @JoinColumn(name = "sucursal_id")
-    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    @Builder.Default
+    // Promociones
+    @OneToMany(cascade =  CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sucursal")
+    @Builder.Default // SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
     private Set<Promocion> promociones = new HashSet<>();
 }

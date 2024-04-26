@@ -17,7 +17,11 @@ public class Provincia extends Base{
 
     private String nombre;
 
+    // RELACIONES
+
+    // Pais
     @ManyToOne
+    @JoinColumn(name = "pais_id")
     private Pais pais;
 
 }

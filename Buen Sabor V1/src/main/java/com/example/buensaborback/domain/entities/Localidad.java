@@ -20,7 +20,11 @@ public class Localidad extends Base{
 
     private String nombre;
 
+    // RELACIONES
+
+    // Provincia
     @ManyToOne
+    @JoinColumn(name = "provincia_id")
     private Provincia provincia;
 
 }
