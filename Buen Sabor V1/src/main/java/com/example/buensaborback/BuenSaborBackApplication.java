@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 @SpringBootApplication
 public class BuenSaborBackApplication {
@@ -95,26 +97,31 @@ public class BuenSaborBackApplication {
             // Crear 1 empresa
             // Crear 2 sucursales para esa empresa
             // crear los Domicilios para esas sucursales
-            Empresa empresaBrown = Empresa.builder().nombre("Lo de Brown").cuil(30503167).razonSocial("Venta de " +
-                    "Alimentos").build();
-            Sucursal sucursalChacras =
-                    Sucursal.builder().nombre("En chacras").horarioApertura(LocalTime.of(17, 0)).horarioCierre(LocalTime.of(23, 0)).empresa(empresaBrown).build();
-            Sucursal sucursalGodoyCruz = Sucursal.builder().nombre("En godoy cruz").horarioApertura(LocalTime.of(16,
-                    0)).horarioCierre(LocalTime.of(23, 30)).empresa(empresaBrown).build();
-            Domicilio domicilioViamonte =
-                    Domicilio.builder().cp(5509).calle("Viamonte").numero(500).localidad(localidad1).build();
-            Domicilio domicilioSanMartin =
-                    Domicilio.builder().cp(5511).calle("San Martin").numero(789).localidad(localidad2).build();
+            Empresa empresaBrown = Empresa.builder().nombre("Lo de Brown").cuil(30503167).razonSocial("Venta de Alimentos").build();
+            empresaBrown.setSucursales(new HashSet<>());
+
+            Sucursal sucursalChacras = Sucursal.builder().nombre("En chacras").horarioApertura(LocalTime.of(17, 0)).horarioCierre(LocalTime.of(23, 0)).build();
+            sucursalChacras.setCategorias(new HashSet<>());
+            sucursalChacras.setPromociones(new HashSet<>());
+            Sucursal sucursalGodoyCruz = Sucursal.builder().nombre("En godoy cruz").horarioApertura(LocalTime.of(16, 0)).horarioCierre(LocalTime.of(23, 30)).build();
+            sucursalGodoyCruz.setCategorias(new HashSet<>());
+            sucursalGodoyCruz.setPromociones(new HashSet<>());
+
+            sucursalChacras.setEmpresa(empresaBrown);
+            sucursalGodoyCruz.setEmpresa(empresaBrown);
+
+            Domicilio domicilioViamonte = Domicilio.builder().cp(5509).calle("Viamonte").numero(500).localidad(localidad1).build();
+            Domicilio domicilioSanMartin = Domicilio.builder().cp(5511).calle("San Martin").numero(789).localidad(localidad2).build();
 
             sucursalChacras.setDomicilio(domicilioViamonte);
             sucursalGodoyCruz.setDomicilio(domicilioSanMartin);
-            //empresaBrown.getSucursales().add(sucursalChacras);
-            //empresaBrown.getSucursales().add(sucursalGodoyCruz);
+
+            empresaRepository.saveAndFlush(empresaBrown); // Guardar y forzar la ejecución inmediata
             domicilioRepository.save(domicilioViamonte);
             domicilioRepository.save(domicilioSanMartin);
+
             sucursalRepository.save(sucursalChacras);
             sucursalRepository.save(sucursalGodoyCruz);
-            empresaRepository.save(empresaBrown);
 
             // Crear Unidades de medida
             UnidadMedida unidadMedidaLitros = UnidadMedida.builder().denominacion("Litros").build();
@@ -128,12 +135,24 @@ public class BuenSaborBackApplication {
 
             // Crear Categorías de productos y subCategorías de los mismos
             Categoria categoriaBebidas = Categoria.builder().denominacion("Bebidas").build();
+            categoriaBebidas.setSubcategorias(new HashSet<>());
+            categoriaBebidas.setArticuloInsumos(new HashSet<>());
+            categoriaBebidas.setArticuloManufacturados(new HashSet<>());
             categoriaRepository.save(categoriaBebidas);
             Categoria categoriaGaseosas = Categoria.builder().denominacion("Gaseosas").categoriaPadre(categoriaBebidas).build();
+            categoriaGaseosas.setSubcategorias(new HashSet<>());
+            categoriaGaseosas.setArticuloInsumos(new HashSet<>());
+            categoriaGaseosas.setArticuloManufacturados(new HashSet<>());
             categoriaRepository.save(categoriaGaseosas);
             Categoria categoriaTragos = Categoria.builder().denominacion("Tragos").categoriaPadre(categoriaBebidas).build();
+            categoriaTragos.setSubcategorias(new HashSet<>());
+            categoriaTragos.setArticuloInsumos(new HashSet<>());
+            categoriaTragos.setArticuloManufacturados(new HashSet<>());
             categoriaRepository.save(categoriaTragos);
             Categoria categoriaPizzas = Categoria.builder().denominacion("Pizzas").build();
+            categoriaPizzas.setSubcategorias(new HashSet<>());
+            categoriaPizzas.setArticuloInsumos(new HashSet<>());
+            categoriaPizzas.setArticuloManufacturados(new HashSet<>());
             categoriaRepository.save(categoriaPizzas);
             categoriaBebidas.getSubcategorias().add(categoriaGaseosas);
             categoriaBebidas.getSubcategorias().add(categoriaTragos);
@@ -141,11 +160,20 @@ public class BuenSaborBackApplication {
 
             // Categorias de insumos
             Categoria categoriaLacteos = Categoria.builder().denominacion("Lacteo").build();
-            categoriaRepository.save(categoriaBebidas);
+            categoriaLacteos.setSubcategorias(new HashSet<>());
+            categoriaLacteos.setArticuloInsumos(new HashSet<>());
+            categoriaLacteos.setArticuloManufacturados(new HashSet<>());
+            categoriaRepository.save(categoriaLacteos);
             Categoria categoriaFrutas = Categoria.builder().denominacion("Frutas").build();
-            categoriaRepository.save(categoriaGaseosas);
+            categoriaFrutas.setSubcategorias(new HashSet<>());
+            categoriaFrutas.setArticuloInsumos(new HashSet<>());
+            categoriaFrutas.setArticuloManufacturados(new HashSet<>());
+            categoriaRepository.save(categoriaFrutas);
             Categoria categoriaHarinas = Categoria.builder().denominacion("Harinas").build();
-            categoriaRepository.save(categoriaTragos);
+            categoriaHarinas.setSubcategorias(new HashSet<>());
+            categoriaHarinas.setArticuloInsumos(new HashSet<>());
+            categoriaHarinas.setArticuloManufacturados(new HashSet<>());
+            categoriaRepository.save(categoriaHarinas);
 
             // Crear Insumos , coca cola , harina , etc
             ArticuloInsumo cocaCola =
@@ -225,6 +253,8 @@ public class BuenSaborBackApplication {
                     .descuento(25.6)
                     .sucursal(sucursalChacras)
                     .build();
+            promocionDiaEnamorados.setArticulosInsumos(new HashSet<>());
+            promocionDiaEnamorados.setArticuloManufacturados(new HashSet<>());
             promocionDiaEnamorados.getArticulosInsumos().add(cocaCola);
             promocionDiaEnamorados.getArticuloManufacturados().add(pizzaNapolitana);
             promocionRepository.save(promocionDiaEnamorados);

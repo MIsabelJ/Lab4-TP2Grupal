@@ -11,7 +11,6 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@ToString
 @Builder
 public class Categoria extends Base{
 
@@ -37,5 +36,6 @@ public class Categoria extends Base{
 
     // Sucursales
     @ManyToMany(mappedBy = "categorias")
+    @ToString.Exclude
     private Set<Sucursal> sucursales;
 }

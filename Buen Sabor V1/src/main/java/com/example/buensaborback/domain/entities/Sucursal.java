@@ -12,7 +12,6 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@ToString
 @Builder
 public class Sucursal extends Base{
 

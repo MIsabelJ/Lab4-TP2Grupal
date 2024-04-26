@@ -10,7 +10,6 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 @Builder
 @Entity
 public class ArticuloManufacturado extends Base{
