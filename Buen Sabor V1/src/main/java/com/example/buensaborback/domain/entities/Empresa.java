@@ -21,8 +21,6 @@ public class Empresa extends Base{
 
     //Bidireccional con sucursales
     @OneToMany(cascade =  CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
-    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    @Builder.Default
-    private Set<Sucursal> sucursales = new HashSet<>();
+    private Set<Sucursal> sucursales;
 
 }

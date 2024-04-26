@@ -25,8 +25,6 @@ public class Cliente extends Base{
 
     // Bidireccional con Pedido
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
-    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    @Builder.Default
-    private Set<Pedido> pedidos = new HashSet<>();
+    private Set<Pedido> pedidos;
 
 }

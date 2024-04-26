@@ -40,12 +40,9 @@ public class ArticuloInsumo extends Base{
 
     // Promociones
     @ManyToMany(mappedBy = "articulosInsumos")
-    @Builder.Default // SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    private Set<Promocion> estaEnPromociones = new HashSet<>();
+    private Set<Promocion> estaEnPromociones;
 
     // Articulos Manufacturados
     @ManyToMany(mappedBy = "articulosInsumos")
-    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    @Builder.Default
-    private Set<ArticuloManufacturado> articuloManufacturados = new HashSet<>();
+    private Set<ArticuloManufacturado> articuloManufacturados;
 }

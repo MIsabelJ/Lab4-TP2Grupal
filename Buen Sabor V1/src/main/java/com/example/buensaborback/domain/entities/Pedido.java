@@ -47,6 +47,5 @@ public class Pedido extends Base{
 
     // Detalles Pedidos
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pedido")
-    @Builder.Default // SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    private Set<DetallePedido> detallePedidos = new HashSet<>();
+    private Set<DetallePedido> detallePedidos;
 }

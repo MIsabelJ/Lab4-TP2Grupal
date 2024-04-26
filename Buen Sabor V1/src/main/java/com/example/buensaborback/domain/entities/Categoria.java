@@ -21,13 +21,11 @@ public class Categoria extends Base{
 
     // Articulos Insumos
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "categoria")
-    @Builder.Default
-    private Set<ArticuloInsumo> articuloInsumos = new HashSet<>();
+    private Set<ArticuloInsumo> articuloInsumos;
 
     // Articulos Manufacturados
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "categoria")
-    @Builder.Default
-    private Set<ArticuloManufacturado> articuloManufacturados = new HashSet<>();
+    private Set<ArticuloManufacturado> articuloManufacturados;
 
     // Recursividad en categorías (categoría y subcategoría)
     @ManyToOne
@@ -35,11 +33,9 @@ public class Categoria extends Base{
     private Categoria categoriaPadre;
 
     @OneToMany(mappedBy = "categoriaPadre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @Builder.Default
-    private Set<Categoria> subcategorias = new HashSet<>(); //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
+    private Set<Categoria> subcategorias;
 
     // Sucursales
     @ManyToMany(mappedBy = "categorias")
-    @Builder.Default //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    private Set<Sucursal> sucursales = new HashSet<>();
+    private Set<Sucursal> sucursales;
 }

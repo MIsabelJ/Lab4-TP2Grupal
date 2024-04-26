@@ -46,6 +46,5 @@ public class ArticuloManufacturado extends Base{
 
     // Promociones
     @ManyToMany(mappedBy = "articuloManufacturados")
-    @Builder.Default // SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    private Set<Promocion> estaEnPromociones = new HashSet<>();
+    private Set<Promocion> estaEnPromociones;
 }

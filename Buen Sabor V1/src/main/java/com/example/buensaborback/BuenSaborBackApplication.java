@@ -98,9 +98,9 @@ public class BuenSaborBackApplication {
             Empresa empresaBrown = Empresa.builder().nombre("Lo de Brown").cuil(30503167).razonSocial("Venta de " +
                     "Alimentos").build();
             Sucursal sucursalChacras =
-                    Sucursal.builder().nombre("En chacras").horarioApertura(LocalTime.of(17, 0)).horarioCierre(LocalTime.of(23, 0)).build();
+                    Sucursal.builder().nombre("En chacras").horarioApertura(LocalTime.of(17, 0)).horarioCierre(LocalTime.of(23, 0)).empresa(empresaBrown).build();
             Sucursal sucursalGodoyCruz = Sucursal.builder().nombre("En godoy cruz").horarioApertura(LocalTime.of(16,
-                    0)).horarioCierre(LocalTime.of(23, 30)).build();
+                    0)).horarioCierre(LocalTime.of(23, 30)).empresa(empresaBrown).build();
             Domicilio domicilioViamonte =
                     Domicilio.builder().cp(5509).calle("Viamonte").numero(500).localidad(localidad1).build();
             Domicilio domicilioSanMartin =
@@ -108,8 +108,8 @@ public class BuenSaborBackApplication {
 
             sucursalChacras.setDomicilio(domicilioViamonte);
             sucursalGodoyCruz.setDomicilio(domicilioSanMartin);
-            empresaBrown.getSucursales().add(sucursalChacras);
-            empresaBrown.getSucursales().add(sucursalGodoyCruz);
+            //empresaBrown.getSucursales().add(sucursalChacras);
+            //empresaBrown.getSucursales().add(sucursalGodoyCruz);
             domicilioRepository.save(domicilioViamonte);
             domicilioRepository.save(domicilioSanMartin);
             sucursalRepository.save(sucursalChacras);
@@ -129,25 +129,33 @@ public class BuenSaborBackApplication {
             // Crear Categorías de productos y subCategorías de los mismos
             Categoria categoriaBebidas = Categoria.builder().denominacion("Bebidas").build();
             categoriaRepository.save(categoriaBebidas);
-            Categoria categoriaGaseosas = Categoria.builder().denominacion("Gaseosas").build();
+            Categoria categoriaGaseosas = Categoria.builder().denominacion("Gaseosas").categoriaPadre(categoriaBebidas).build();
             categoriaRepository.save(categoriaGaseosas);
-            Categoria categoriaTragos = Categoria.builder().denominacion("Tragos").build();
+            Categoria categoriaTragos = Categoria.builder().denominacion("Tragos").categoriaPadre(categoriaBebidas).build();
             categoriaRepository.save(categoriaTragos);
             Categoria categoriaPizzas = Categoria.builder().denominacion("Pizzas").build();
             categoriaRepository.save(categoriaPizzas);
-            categoriaBebidas.getSubCategorias().add(categoriaGaseosas);
-            categoriaBebidas.getSubCategorias().add(categoriaTragos);
+            categoriaBebidas.getSubcategorias().add(categoriaGaseosas);
+            categoriaBebidas.getSubcategorias().add(categoriaTragos);
             categoriaRepository.save(categoriaBebidas);
+
+            // Categorias de insumos
+            Categoria categoriaLacteos = Categoria.builder().denominacion("Lacteo").build();
+            categoriaRepository.save(categoriaBebidas);
+            Categoria categoriaFrutas = Categoria.builder().denominacion("Frutas").build();
+            categoriaRepository.save(categoriaGaseosas);
+            Categoria categoriaHarinas = Categoria.builder().denominacion("Harinas").build();
+            categoriaRepository.save(categoriaTragos);
 
             // Crear Insumos , coca cola , harina , etc
             ArticuloInsumo cocaCola =
-                    ArticuloInsumo.builder().denominacion("Coca cola").unidadMedida(unidadMedidaLitros).esParaElaborar(false).stockActual(5).stockMaximo(50).precioCompra(50.0).precioVenta(70.0).build();
+                    ArticuloInsumo.builder().denominacion("Coca cola").unidadMedida(unidadMedidaLitros).esParaElaborar(false).stockActual(5).stockMaximo(50).precioCompra(50.0).precioVenta(70.0).categoria(categoriaBebidas).build();
             ArticuloInsumo harina =
-                    ArticuloInsumo.builder().denominacion("Harina").unidadMedida(unidadMedidaGramos).esParaElaborar(true).stockActual(4).stockMaximo(40).precioCompra(40.0).precioVenta(60.5).build();
+                    ArticuloInsumo.builder().denominacion("Harina").unidadMedida(unidadMedidaGramos).esParaElaborar(true).stockActual(4).stockMaximo(40).precioCompra(40.0).precioVenta(60.5).categoria(categoriaHarinas).build();
             ArticuloInsumo queso =
-                    ArticuloInsumo.builder().denominacion("Queso").unidadMedida(unidadMedidaGramos).esParaElaborar(true).stockActual(20).stockMaximo(50).precioCompra(23.6).precioVenta(66.6).build();
+                    ArticuloInsumo.builder().denominacion("Queso").unidadMedida(unidadMedidaGramos).esParaElaborar(true).stockActual(20).stockMaximo(50).precioCompra(23.6).precioVenta(66.6).categoria(categoriaLacteos).build();
             ArticuloInsumo tomate =
-                    ArticuloInsumo.builder().denominacion("Tomate").unidadMedida(unidadMedidaCantidad).esParaElaborar(true).stockActual(20).stockMaximo(50).precioCompra(23.6).precioVenta(66.6).build();
+                    ArticuloInsumo.builder().denominacion("Tomate").unidadMedida(unidadMedidaCantidad).esParaElaborar(true).stockActual(20).stockMaximo(50).precioCompra(23.6).precioVenta(66.6).categoria(categoriaFrutas).build();
 
             // crear fotos para cada insumo
             Imagen imagenCoca =
@@ -174,9 +182,9 @@ public class BuenSaborBackApplication {
 
             // Crear Articulos Manufacturados
             ArticuloManufacturado pizzaMuzarella =
-                    ArticuloManufacturado.builder().denominacion("Pizza Muzarella").descripcion("Una pizza clasica").unidadMedida(unidadMedidaPorciones).precioVenta(130.0).tiempoEstimadoMinutos(15).build();
+                    ArticuloManufacturado.builder().denominacion("Pizza Muzarella").descripcion("Una pizza clasica").unidadMedida(unidadMedidaPorciones).precioVenta(130.0).tiempoEstimadoMinutos(15).categoria(categoriaPizzas).build();
             ArticuloManufacturado pizzaNapolitana =
-                    ArticuloManufacturado.builder().denominacion("Pizza Muzarella").descripcion("Una pizza clasica").unidadMedida(unidadMedidaPorciones).precioVenta(150.0).tiempoEstimadoMinutos(15).build();
+                    ArticuloManufacturado.builder().denominacion("Pizza Napolitana").descripcion("Una pizza napolitana").unidadMedida(unidadMedidaPorciones).precioVenta(150.0).tiempoEstimadoMinutos(15).categoria(categoriaPizzas).build();
 
 
             // Crear fotos para los artículos manufacturados
@@ -200,9 +208,9 @@ public class BuenSaborBackApplication {
             articuloManufacturadoRepository.save(pizzaNapolitana);
 
             // Establecer relaciones de las categorias
-            categoriaGaseosas.getArticulosInsumos().add(cocaCola);
-            categoriaPizzas.getArticulosManufacturados().add(pizzaMuzarella);
-            categoriaPizzas.getArticulosManufacturados().add(pizzaNapolitana);
+            categoriaGaseosas.getArticuloInsumos().add(cocaCola);
+            categoriaPizzas.getArticuloManufacturados().add(pizzaMuzarella);
+            categoriaPizzas.getArticuloManufacturados().add(pizzaNapolitana);
             categoriaRepository.save(categoriaGaseosas);
             categoriaRepository.save(categoriaPizzas);
 
@@ -215,6 +223,7 @@ public class BuenSaborBackApplication {
                     .horaDesde(LocalTime.of(0, 0))
                     .horaHasta(LocalTime.of(23, 59))
                     .descuento(25.6)
+                    .sucursal(sucursalChacras)
                     .build();
             promocionDiaEnamorados.getArticulosInsumos().add(cocaCola);
             promocionDiaEnamorados.getArticuloManufacturados().add(pizzaNapolitana);

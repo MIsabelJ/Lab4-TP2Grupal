@@ -35,12 +35,10 @@ public class Sucursal extends Base{
     @ManyToMany
     @JoinTable(name = "sucursal_categoria",
             joinColumns = @JoinColumn(name = "sucursal_id"),
-            inverseJoinColumns = @JoinColumn(name = "categoria_id")) // SE AGREGA EL JOIN TABLE PARA QUE JPA CREE LA TABLA INTERMEDIA EN UNA RELACION MANY TO MANY
-    @Builder.Default // SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    private Set<Categoria> categorias = new HashSet<>();
+            inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+    private Set<Categoria> categorias;
 
     // Promociones
     @OneToMany(cascade =  CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sucursal")
-    @Builder.Default // SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    private Set<Promocion> promociones = new HashSet<>();
+    private Set<Promocion> promociones;
 }
