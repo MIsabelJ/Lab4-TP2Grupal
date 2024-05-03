@@ -1,9 +1,7 @@
 package com.example.buensaborback.domain.entities;
 
 import com.example.buensaborback.domain.entities.enums.FormaPago;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -28,5 +26,9 @@ public class Factura extends Base{
     private String mpPaymentType;
     private FormaPago formaPago;
     private Double totalVenta;
+
+    @OneToOne
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
 
 }

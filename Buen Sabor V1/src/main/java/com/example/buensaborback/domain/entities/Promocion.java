@@ -35,9 +35,8 @@ public class Promocion extends Base {
     @ManyToMany
     @JoinTable(name = "promocion_articuloManufacturado",
             joinColumns = @JoinColumn(name = "promocion_id"),
-            inverseJoinColumns = @JoinColumn(name = "articuloManufacturado_id")) // SE AGREGA EL JOIN TABLE PARA QUE JPA CREE LA TABLA INTERMEDIA EN UNA RELACION MANY TO MANY
-    @Builder.Default // SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    private Set<ArticuloManufacturado> articuloManufacturados = new HashSet<>();
+            inverseJoinColumns = @JoinColumn(name = "articuloManufacturado_id"))
+    private Set<ArticuloManufacturado> articuloManufacturados;
 
     // Articulos Insumos
     @ManyToMany

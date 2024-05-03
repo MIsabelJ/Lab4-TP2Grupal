@@ -42,7 +42,7 @@ public class Pedido extends Base{
     private Domicilio domicilio;
 
     // Factura
-    @OneToOne
+    @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
     private Factura factura;
 
     // Detalles Pedidos

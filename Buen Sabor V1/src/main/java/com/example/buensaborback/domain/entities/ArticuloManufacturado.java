@@ -10,40 +10,35 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 @Entity
-public class ArticuloManufacturado extends Base{
+public class ArticuloManufacturado extends Articulo{
 
     private String denominacion;
     private String descripcion;
     private Double precioVenta;
     private Integer tiempoEstimadoMinutos;
 
-    // RELACIONES
-
-    // Imagen
-    @OneToOne
-    private Imagen imagen;
-
-    // Unidad de medida
-    @ManyToOne
-    @JoinColumn(name = "unidadMedida_id")
-    private UnidadMedida unidadMedida;
-
-    // Categoria
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
-
     // Articulos Insumos
     @ManyToMany
     @JoinTable(name = "articuloManufacturado_articuloInsumo",
             joinColumns = @JoinColumn(name = "articuloManufacturado_id"),
             inverseJoinColumns = @JoinColumn(name = "articuloInsumo_id")) //SE AGREGA EL JOIN TABLE PARA QUE JPA CREE LA TABLA INTERMEDIA EN UNA RELACION MANY TO MANY
-    @Builder.Default //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
+
     private Set<ArticuloInsumo> articulosInsumos = new HashSet<>();
 
     // Promociones
     @ManyToMany(mappedBy = "articuloManufacturados")
     private Set<Promocion> estaEnPromociones;
+
+    @Builder
+
+    public ArticuloManufacturado(Imagen imagen, UnidadMedida unidadMedida, Categoria categoria, String denominacion, String descripcion, Double precioVenta, Integer tiempoEstimadoMinutos, Set<ArticuloInsumo> articulosInsumos, Set<Promocion> estaEnPromociones) {
+        super(imagen, unidadMedida, categoria);
+        this.denominacion = denominacion;
+        this.descripcion = descripcion;
+        this.precioVenta = precioVenta;
+        this.tiempoEstimadoMinutos = tiempoEstimadoMinutos;
+        this.articulosInsumos = articulosInsumos;
+        this.estaEnPromociones = estaEnPromociones;
+    }
 }

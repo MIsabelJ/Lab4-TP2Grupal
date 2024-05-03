@@ -1,6 +1,9 @@
 package com.example.buensaborback;
 
 import com.example.buensaborback.domain.entities.*;
+import com.example.buensaborback.domain.entities.enums.Estado;
+import com.example.buensaborback.domain.entities.enums.FormaPago;
+import com.example.buensaborback.domain.entities.enums.TipoEnvio;
 import com.example.buensaborback.repositories.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,7 +74,7 @@ public class BuenSaborBackApplication {
 
 
     @Bean
-    CommandLineRunner init() {
+    CommandLineRunner init(PedidoRepository pedidoRepository, FacturaRepository facturaRepository, DetallePedidoRepository detallePedidoRepository, UsuarioRepository usuarioRepository) {
         return args -> {
             logger.info("----------------ESTOY----FUNCIONANDO---------------------");
             // Etapa del dashboard
@@ -211,8 +214,10 @@ public class BuenSaborBackApplication {
             // Crear Articulos Manufacturados
             ArticuloManufacturado pizzaMuzarella =
                     ArticuloManufacturado.builder().denominacion("Pizza Muzarella").descripcion("Una pizza clasica").unidadMedida(unidadMedidaPorciones).precioVenta(130.0).tiempoEstimadoMinutos(15).categoria(categoriaPizzas).build();
+            pizzaMuzarella.setArticulosInsumos(new HashSet<>());
             ArticuloManufacturado pizzaNapolitana =
                     ArticuloManufacturado.builder().denominacion("Pizza Napolitana").descripcion("Una pizza napolitana").unidadMedida(unidadMedidaPorciones).precioVenta(150.0).tiempoEstimadoMinutos(15).categoria(categoriaPizzas).build();
+            pizzaNapolitana.setArticulosInsumos(new HashSet<>());
 
 
             // Crear fotos para los artículos manufacturados
@@ -272,6 +277,70 @@ public class BuenSaborBackApplication {
 
             logger.info("Sucursal Chacras {}", sucursalChacras);
             logger.info("Sucursal Godoy Cruz {}", sucursalGodoyCruz);
+
+            Usuario usuario1 = Usuario.builder()
+                    .auth0Id("1")
+                    .username("UserName")
+                    .build();
+
+            usuarioRepository.save(usuario1);
+
+            Cliente cliente1 = Cliente.builder()
+                    .usuario(usuario1)
+                    .nombre("Gabriel")
+                    .apellido("Giorgis")
+                    .email("ejemplo@gmail.com")
+                    .telefono("123")
+                    .build();
+            cliente1.setPedidos(new HashSet<>());
+
+            Pedido pedido1 = Pedido.builder().fechaPedido(LocalDate.now())
+                    .horaEstimadaFinalizacion(LocalTime.now())
+                    .total(1.00)
+                    .totalCosto(1.00)
+                    .estado(Estado.Entregado)
+                    .tipoEnvio(TipoEnvio.Delivery)
+                    .formaPago(FormaPago.MercadoPago)
+                    .domicilio(domicilioSanMartin)
+                    .cliente(cliente1)
+                    .build();
+            pedido1.setDetallePedidos(new HashSet<>());
+
+            cliente1.getPedidos().add(pedido1);
+            clienteRepository.save(cliente1);
+
+            DetallePedido detalle1 = DetallePedido.builder()
+                    .cantidad(1)
+                    .subTotal(1.00)
+                    .pedido(pedido1)
+                    .articuloManufacturado(pizzaMuzarella)
+                    .articuloInsumo(cocaCola)
+                    .build();
+
+            pedido1.getDetallePedidos().add(detalle1);
+
+            Factura factura1 = Factura.builder()
+                    .fechaFacturacion(LocalDate.now())
+                    .mpPaymentId(1)
+                    .mpMerchantOrderId(1)
+                    .mpPreferenceId("Mercado Pago")
+                    .mpPaymentType("Mercado Pago")
+                    .formaPago(FormaPago.MercadoPago)
+                    .totalVenta(1.00)
+                    .build();
+
+
+            detallePedidoRepository.save(detalle1);
+
+            factura1.setPedido(pedido1);
+            facturaRepository.save(factura1);
+            pedido1.setFactura(factura1);
+            pedidoRepository.save(pedido1);
+
+
+
+
+
         };
     }
 }
