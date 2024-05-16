@@ -1,6 +1,5 @@
-package com.example.buensaborback.domain.dtos.PaisDto;
+package com.example.buensaborback.domain.dtos.LocalidadDto;
 
-import com.example.buensaborback.domain.dtos.BaseDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +9,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class PaisDto extends BaseDto {
+public class LocalidadCreateDto {
+
     private String nombre;
+    private long idProvincia;
+
 }
