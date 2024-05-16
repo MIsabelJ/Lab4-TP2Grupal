@@ -17,6 +17,4 @@ public class EmpresaCreateDto {
     private String calle;
     private Integer numero;
     private Integer cp;
-
-    private Set<SucursalCreateDto> sucursales; // Consideracion de borrarlo
 }

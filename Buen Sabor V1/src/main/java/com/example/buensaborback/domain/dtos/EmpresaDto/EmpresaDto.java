@@ -18,6 +18,4 @@ public class EmpresaDto extends BaseDto {
     private String calle;
     private Integer numero;
     private Integer cp;
-
-    private Set<SucursalDto> sucursales;
 }

@@ -17,11 +17,13 @@ import java.util.Set;
 public class PromocionCreateDto {
 
     private String denominacion;
+    @Schema(type = "string", format = "date", pattern = "dd/MM/yyyy", description = "Fecha de inicio en formato dd/MM/yyyy")
     private LocalDate fechaDesde;
+    @Schema(type = "string", format = "date", pattern = "dd/MM/yyyy", description = "Fecha de fin en formato dd/MM/yyyy")
     private LocalDate fechaHasta;
     @Schema(type = "string", format = "time", pattern = "HH:mm:ss", description = "Horario de apertura en formato HH:mm:ss")
     private LocalTime horaDesde;
-    @Schema(type = "string", format = "time", pattern = "HH:mm:ss", description = "Horario de apertura en formato HH:mm:ss")
+    @Schema(type = "string", format = "time", pattern = "HH:mm:ss", description = "Horario de cierre en formato HH:mm:ss")
     private LocalTime horaHasta;
     private Double descuento;
     private Long idSucursal;

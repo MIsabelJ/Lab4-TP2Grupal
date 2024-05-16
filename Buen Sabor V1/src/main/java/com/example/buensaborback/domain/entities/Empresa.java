@@ -19,8 +19,4 @@ public class Empresa extends Base{
     private String razonSocial;
     private Integer cuil;
 
-    //Bidireccional con sucursales
-    @OneToMany(cascade =  CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
-    private Set<Sucursal> sucursales;
-
 }

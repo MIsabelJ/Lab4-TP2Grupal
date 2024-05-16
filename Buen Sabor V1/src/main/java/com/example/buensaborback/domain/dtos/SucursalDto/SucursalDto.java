@@ -23,7 +23,7 @@ public class SucursalDto extends BaseDto {
     private String nombre;
     @Schema(type = "string", format = "time", pattern = "HH:mm:ss", description = "Horario de apertura en formato HH:mm:ss")
     private LocalTime horarioApertura;
-    @Schema(type = "string", format = "time", pattern = "HH:mm:ss", description = "Horario de apertura en formato HH:mm:ss")
+    @Schema(type = "string", format = "time", pattern = "HH:mm:ss", description = "Horario de cierre en formato HH:mm:ss")
     private LocalTime horarioCierre;
     private DomicilioDto domicilio;
     private EmpresaDto empresa;
