@@ -12,6 +12,6 @@ import lombok.Setter;
 public class LocalidadCreateDto {
 
     private String nombre;
-    private long idProvincia;
+    private Long idProvincia;
 
 }

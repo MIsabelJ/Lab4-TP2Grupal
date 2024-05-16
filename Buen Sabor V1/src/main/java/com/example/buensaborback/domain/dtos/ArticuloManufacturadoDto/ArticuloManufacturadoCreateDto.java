@@ -21,6 +21,6 @@ public class ArticuloManufacturadoCreateDto extends ArticuloCreateDto {
     private Double precioVenta;
     private Integer tiempoEstimadoMinutos;
 
-    private Set<Long> idArticulosInsumos = new HashSet<>();
+    private Set<Long> idArticulosInsumos; // new hashSet?
     private Set<Long> idEstaEnPromociones;
 }

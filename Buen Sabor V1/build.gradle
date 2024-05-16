@@ -31,6 +31,8 @@ dependencies {
 	//SWAGGER
 	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.1.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//MAPSTRUCT
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
 
 }
 

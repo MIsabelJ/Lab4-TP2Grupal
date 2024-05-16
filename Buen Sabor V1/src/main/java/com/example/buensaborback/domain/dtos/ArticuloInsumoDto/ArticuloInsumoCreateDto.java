@@ -1,8 +1,6 @@
 package com.example.buensaborback.domain.dtos.ArticuloInsumoDto;
 
 import com.example.buensaborback.domain.dtos.ArticuloDto.ArticuloCreateDto;
-import com.example.buensaborback.domain.dtos.ImagenDto.ImagenDto;
-import com.example.buensaborback.domain.entities.*;
 import lombok.*;
 
 import java.util.Set;
@@ -20,5 +18,6 @@ public class ArticuloInsumoCreateDto extends ArticuloCreateDto{
     private Boolean esParaElaborar;
 
     private Set<Long> idEstaEnPromociones;
+    private Set<Long> idArticuloManufacturados; //Consideraciones de borrarlo
 
 }

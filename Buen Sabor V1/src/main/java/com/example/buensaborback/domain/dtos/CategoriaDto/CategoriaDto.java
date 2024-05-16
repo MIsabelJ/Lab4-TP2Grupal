@@ -4,10 +4,6 @@ import com.example.buensaborback.domain.dtos.ArticuloInsumoDto.ArticuloInsumoDto
 import com.example.buensaborback.domain.dtos.ArticuloManufacturadoDto.ArticuloManufacturadoDto;
 import com.example.buensaborback.domain.dtos.BaseDto;
 import com.example.buensaborback.domain.dtos.SucursalDto.SucursalDto;
-import com.example.buensaborback.domain.entities.ArticuloInsumo;
-import com.example.buensaborback.domain.entities.ArticuloManufacturado;
-import com.example.buensaborback.domain.entities.Categoria;
-import com.example.buensaborback.domain.entities.Sucursal;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

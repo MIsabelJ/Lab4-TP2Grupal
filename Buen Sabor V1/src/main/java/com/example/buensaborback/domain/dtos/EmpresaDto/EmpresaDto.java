@@ -1,12 +1,14 @@
 package com.example.buensaborback.domain.dtos.EmpresaDto;
 
 import com.example.buensaborback.domain.dtos.BaseDto;
-import com.example.buensaborback.domain.dtos.LocalidadDto.LocalidadDto;
-import com.example.buensaborback.domain.entities.Localidad;
+import com.example.buensaborback.domain.dtos.SucursalDto.SucursalDto;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,5 +19,5 @@ public class EmpresaDto extends BaseDto {
     private Integer numero;
     private Integer cp;
 
-    private LocalidadDto localidad;
+    private Set<SucursalDto> sucursales;
 }
