@@ -1,11 +1,14 @@
 package com.example.buensaborback.business.mapper;
 
+import com.example.buensaborback.business.service.CategoriaService;
+import com.example.buensaborback.business.service.SucursalService;
 import com.example.buensaborback.domain.dtos.CategoriaDto.CategoriaCreateDto;
 import com.example.buensaborback.domain.dtos.CategoriaDto.CategoriaDto;
 import com.example.buensaborback.domain.entities.Categoria;
+import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-//@Mapper(componentModel = "spring", uses = {CategoriaService.class, SucursalService.class})
+@Mapper(componentModel = "spring", uses = {CategoriaService.class, SucursalService.class})
 public interface CategoriaMapper extends BaseMapper<Categoria, CategoriaDto, CategoriaCreateDto, CategoriaCreateDto> {
 
     @Mapping(target = "categoriaPadre", source = "idCategoriaPadre", qualifiedByName = "getById")

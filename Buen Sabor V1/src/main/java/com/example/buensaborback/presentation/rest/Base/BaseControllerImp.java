@@ -1,49 +1,49 @@
 package com.example.buensaborback.presentation.rest.Base;
 
+import com.example.buensaborback.business.facade.Base.BaseFacadeImp;
 import com.example.buensaborback.business.service.Base.BaseService;
+import com.example.buensaborback.domain.dtos.BaseDto;
 import com.example.buensaborback.domain.entities.Base;
 import com.example.buensaborback.repositories.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
 import java.util.List;
+@Controller
+public abstract class BaseControllerImp<E extends Base,D extends BaseDto,DC, DE, ID extends Serializable, F extends BaseFacadeImp<E,D,DC,DE,ID>> implements BaseController<D,DC,DE,ID> {
 
-public abstract class BaseControllerImp<E extends Base, ID extends Serializable> implements BaseService<E, ID> {
-    @Autowired
-    protected BaseRepository<E,ID> baseRepository;
-
-    @Override
-    public E create(E request){
-        var newEntity = baseRepository.save(request);
-        return newEntity;
+    protected F facade;
+    public BaseControllerImp(F facade){
+        this.facade = facade;
     }
 
-    @Override
-    public E getById(ID id){
-        var entity = baseRepository.getById(id);
-        return entity;
+    @GetMapping("/{id}")
+    public ResponseEntity<D> getById(@PathVariable ID id){
+        return ResponseEntity.ok(facade.getById(id));
     }
 
-    @Override
-    public List<E> getAll(){
-        var entities = baseRepository.getAll();
-        return entities;
+    @GetMapping
+    public ResponseEntity<List<D>> getAll() {
+        return ResponseEntity.ok(facade.getAll());
     }
 
-    @Override
-    public void deleteById(ID id){
-        var entity = getById(id);
-        baseRepository.delete(entity);
+    @PostMapping()
+    public ResponseEntity<D> create(@RequestBody DC entity){
+        return ResponseEntity.ok(facade.createNew(entity));
     }
 
-    @Override
-    public E update(E request, ID id){
-        var optionalEntity = baseRepository.findById((ID) request.getId());
-        if (optionalEntity.isEmpty()){
-            throw new RuntimeException("No se encontro una entidad con el id " + request.getId());
-        }
-        var newEntity = baseRepository.save(request);
-        return newEntity;
+    @PutMapping("/{id}")
+    public ResponseEntity<D> edit(@RequestBody DE entity, @PathVariable ID id){
+        return ResponseEntity.ok(facade.update(entity, id));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable ID id){
+        facade.deleteById(id);
+        return ResponseEntity.ok(null);
     }
 
 }

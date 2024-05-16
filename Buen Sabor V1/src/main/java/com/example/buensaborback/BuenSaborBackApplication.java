@@ -26,7 +26,7 @@ public class BuenSaborBackApplication {
 // Ejemplo  @Autowired
 //	private ClienteRepository clienteRepository;
 
-    private static final Logger logger = LoggerFactory.getLogger(BuenSaborBackApplication.class);
+/*    private static final Logger logger = LoggerFactory.getLogger(BuenSaborBackApplication.class);
 
     @Autowired
     private ClienteRepository clienteRepository;
@@ -66,13 +66,13 @@ public class BuenSaborBackApplication {
 
     @Autowired
     private PromocionRepository promocionRepository;
+    */
 
     public static void main(String[] args) {
         SpringApplication.run(BuenSaborBackApplication.class, args);
-        logger.info("Estoy activo en el main");
     }
 
-
+/*
     @Bean
     CommandLineRunner init(PedidoRepository pedidoRepository, FacturaRepository facturaRepository, DetallePedidoRepository detallePedidoRepository, UsuarioRepository usuarioRepository) {
         return args -> {
@@ -343,6 +343,8 @@ public class BuenSaborBackApplication {
 
         };
     }
+
+ */
 }
 
 

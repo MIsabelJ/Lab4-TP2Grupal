@@ -28,7 +28,9 @@ public class Categoria extends Base{
 
     // Sucursales
     @ManyToMany
-    @JoinColumn(name = "sucursales_id")
+    @JoinTable(name = "sucursal_categoria",
+            joinColumns = @JoinColumn(name = "categoria_id"),
+            inverseJoinColumns = @JoinColumn(name = "sucursal_id"))
     @ToString.Exclude
     private Set<Sucursal> sucursales;
 }
