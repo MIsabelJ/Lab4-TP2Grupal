@@ -1,5 +1,7 @@
 package com.example.buensaborback.domain.dtos.SucursalDto;
 
+import com.example.buensaborback.domain.dtos.DomicilioDto.DomicilioCreateDto;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,9 +17,11 @@ import java.util.Set;
 public class SucursalCreateDto {
 
     private String nombre;
+    @Schema(type = "string", format = "time", pattern = "HH:mm:ss", description = "Horario de apertura en formato HH:mm:ss")
     private LocalTime horarioApertura;
+    @Schema(type = "string", format = "time", pattern = "HH:mm:ss", description = "Horario de apertura en formato HH:mm:ss")
     private LocalTime horarioCierre;
-    private Long idDomicilio;
+    private DomicilioCreateDto domicilio;
     private Long idEmpresa;
     private Set<Long> idCategorias;
     private Set<Long> idPromociones;
