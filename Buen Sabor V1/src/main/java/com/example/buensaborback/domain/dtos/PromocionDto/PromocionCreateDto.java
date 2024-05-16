@@ -1,9 +1,5 @@
 package com.example.buensaborback.domain.dtos.PromocionDto;
 
-import com.example.buensaborback.domain.dtos.ArticuloInsumoDto.ArticuloInsumoDto;
-import com.example.buensaborback.domain.dtos.ArticuloManufacturadoDto.ArticuloManufacturadoDto;
-import com.example.buensaborback.domain.dtos.BaseDto;
-import com.example.buensaborback.domain.dtos.SucursalDto.SucursalDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
-public class PromocionDto extends BaseDto {
+public class PromocionCreateDto {
 
     private String denominacion;
     private LocalDate fechaDesde;
@@ -25,7 +21,7 @@ public class PromocionDto extends BaseDto {
     private LocalTime horaDesde;
     private LocalTime horaHasta;
     private Double descuento;
-    private SucursalDto sucursal;
-    private Set<ArticuloManufacturadoDto> articuloManufacturados;
-    private Set<ArticuloInsumoDto> articulosInsumos;
+    private long idSucursal;
+    private Set<Long> idArticuloManufacturados;
+    private Set<Long> idArticulosInsumos;
 }
