@@ -23,7 +23,5 @@ public class SucursalCreateDto {
     private LocalTime horarioCierre;
     private DomicilioCreateDto domicilio;
     private Long idEmpresa;
-    private Set<Long> idCategorias; // Que onda con esto?
-    private Set<Long> idPromociones;
 
 }

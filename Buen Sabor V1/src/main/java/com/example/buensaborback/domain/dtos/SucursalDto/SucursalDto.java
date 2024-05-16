@@ -27,7 +27,5 @@ public class SucursalDto extends BaseDto {
     private LocalTime horarioCierre;
     private DomicilioDto domicilio;
     private EmpresaDto empresa;
-    private Set<CategoriaDto> categorias;
-    private Set<PromocionDto> promociones;
 
 }

@@ -26,12 +26,8 @@ public class ArticuloInsumo extends Articulo{
     @ManyToMany(mappedBy = "articulosInsumos")
     private Set<Promocion> estaEnPromociones;
 
-    // Articulos Manufacturados
-    @ManyToMany(mappedBy = "articulosInsumos")
-    private Set<ArticuloManufacturado> articuloManufacturados;
-
     @Builder
-    public ArticuloInsumo(Imagen imagen, UnidadMedida unidadMedida, Categoria categoria, String denominacion, Double precioCompra, Double precioVenta, Integer stockActual, Integer stockMaximo, Boolean esParaElaborar, Set<Promocion> estaEnPromociones, Set<ArticuloManufacturado> articuloManufacturados) {
+    public ArticuloInsumo(Imagen imagen, UnidadMedida unidadMedida, Categoria categoria, String denominacion, Double precioCompra, Double precioVenta, Integer stockActual, Integer stockMaximo, Boolean esParaElaborar, Set<Promocion> estaEnPromociones) {
         super(imagen, unidadMedida, categoria);
         this.denominacion = denominacion;
         this.precioCompra = precioCompra;
@@ -40,6 +36,5 @@ public class ArticuloInsumo extends Articulo{
         this.stockMaximo = stockMaximo;
         this.esParaElaborar = esParaElaborar;
         this.estaEnPromociones = estaEnPromociones;
-        this.articuloManufacturados = articuloManufacturados;
     }
 }

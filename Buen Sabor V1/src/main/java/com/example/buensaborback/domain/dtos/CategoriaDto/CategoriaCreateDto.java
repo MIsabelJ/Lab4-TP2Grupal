@@ -16,8 +16,6 @@ import java.util.Set;
 @Setter
 public class CategoriaCreateDto {
     private String denominacion;
-    private Set<Long> idArticuloInsumos; // Consideracion de borrarlo por bidireccionalidad injustificada
-    private Set<Long> idArticuloManufacturados; // Consideracion de borrarlo por bidireccionalidad injustificada
     private Long idCategoriaPadre;
     private Set<Long> idSubcategorias;
     private Set<Long> idSucursales; // Consideracion de borrarlo por bidireccionalidad injustificada

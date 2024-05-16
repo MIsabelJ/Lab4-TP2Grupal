@@ -18,14 +18,6 @@ public class Categoria extends Base{
 
     // RELACIONES
 
-    // Articulos Insumos
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "categoria")
-    private Set<ArticuloInsumo> articuloInsumos;
-
-    // Articulos Manufacturados
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "categoria")
-    private Set<ArticuloManufacturado> articuloManufacturados;
-
     // Recursividad en categorías (categoría y subcategoría)
     @ManyToOne
     @JoinColumn(name = "categoria_padre_id")
@@ -35,7 +27,8 @@ public class Categoria extends Base{
     private Set<Categoria> subcategorias;
 
     // Sucursales
-    @ManyToMany(mappedBy = "categorias")
+    @ManyToMany
+    @JoinColumn(name = "sucursales_id")
     @ToString.Exclude
     private Set<Sucursal> sucursales;
 }

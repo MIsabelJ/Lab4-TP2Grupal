@@ -30,14 +30,14 @@ public class Sucursal extends Base{
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
 
-    // Categorias
-    @ManyToMany
-    @JoinTable(name = "sucursal_categoria",
-            joinColumns = @JoinColumn(name = "sucursal_id"),
-            inverseJoinColumns = @JoinColumn(name = "categoria_id"))
-    private Set<Categoria> categorias;
-
-    // Promociones
-    @OneToMany(cascade =  CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sucursal")
-    private Set<Promocion> promociones;
+//    // Categorias
+//    @ManyToMany
+//    @JoinTable(name = "sucursal_categoria",
+//            joinColumns = @JoinColumn(name = "sucursal_id"),
+//            inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+//    private Set<Categoria> categorias;
+//
+//    // Promociones
+//    @OneToMany(cascade =  CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sucursal")
+//    private Set<Promocion> promociones;
 }

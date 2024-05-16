@@ -22,6 +22,5 @@ public class ArticuloInsumoDto extends ArticuloDto {
     private Boolean esParaElaborar;
 
     private Set<PromocionDto> estaEnPromociones;
-    private Set<ArticuloManufacturadoDto> articuloManufacturados;
 
 }

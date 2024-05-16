@@ -18,6 +18,5 @@ public class ArticuloInsumoCreateDto extends ArticuloCreateDto{
     private Boolean esParaElaborar;
 
     private Set<Long> idEstaEnPromociones;
-    private Set<Long> idArticuloManufacturados; //Consideraciones de borrarlo
 
 }
