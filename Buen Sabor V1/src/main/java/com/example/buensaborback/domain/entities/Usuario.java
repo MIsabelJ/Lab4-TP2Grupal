@@ -11,7 +11,7 @@ import lombok.*;
 @Setter
 @Entity
 @ToString
-@Builder
+//@Builder
 public class Usuario extends Base{
 
     private String auth0Id;

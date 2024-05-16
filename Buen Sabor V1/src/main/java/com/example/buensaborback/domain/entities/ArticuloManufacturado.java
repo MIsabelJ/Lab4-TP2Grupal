@@ -30,7 +30,7 @@ public class ArticuloManufacturado extends Articulo{
     @ManyToMany(mappedBy = "articuloManufacturados")
     private Set<Promocion> estaEnPromociones;
 
-    @Builder
+ /*   @Builder
     public ArticuloManufacturado(Imagen imagen, UnidadMedida unidadMedida, Categoria categoria, String denominacion, String descripcion, Double precioVenta, Integer tiempoEstimadoMinutos, Set<ArticuloInsumo> articulosInsumos, Set<Promocion> estaEnPromociones) {
         super(imagen, unidadMedida, categoria);
         this.denominacion = denominacion;
@@ -39,5 +39,5 @@ public class ArticuloManufacturado extends Articulo{
         this.tiempoEstimadoMinutos = tiempoEstimadoMinutos;
         this.articulosInsumos = articulosInsumos;
         this.estaEnPromociones = estaEnPromociones;
-    }
+    }*/
 }

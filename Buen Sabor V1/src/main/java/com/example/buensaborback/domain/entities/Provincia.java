@@ -12,7 +12,7 @@ import lombok.*;
 @Setter
 @Entity
 @ToString
-@Builder
+//@Builder
 public class Provincia extends Base{
 
     private String nombre;

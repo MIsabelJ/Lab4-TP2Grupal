@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 @Entity
 @ToString
-@Builder
+//@Builder
 public class Imagen extends Base{
 
     private String url;

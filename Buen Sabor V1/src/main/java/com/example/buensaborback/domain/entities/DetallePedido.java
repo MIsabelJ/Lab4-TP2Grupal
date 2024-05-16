@@ -10,7 +10,7 @@ import lombok.*;
 @Setter
 @Entity
 @ToString
-@Builder
+//@Builder
 public class DetallePedido extends Base{
 
     private Integer cantidad;

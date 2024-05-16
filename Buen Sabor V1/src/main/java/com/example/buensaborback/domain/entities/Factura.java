@@ -16,7 +16,7 @@ import java.util.Set;
 @Setter
 @Entity
 @ToString
-@Builder
+//@Builder
 public class Factura extends Base{
 
     private LocalDate fechaFacturacion;

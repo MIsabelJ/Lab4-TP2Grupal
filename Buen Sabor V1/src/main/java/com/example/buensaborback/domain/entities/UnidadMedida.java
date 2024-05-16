@@ -13,7 +13,7 @@ import java.util.Set;
 @Setter
 @Entity
 @ToString
-@Builder
+//@Builder
 public class UnidadMedida extends Base{
 
     private String denominacion;

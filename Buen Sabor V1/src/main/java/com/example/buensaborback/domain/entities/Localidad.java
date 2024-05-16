@@ -15,7 +15,7 @@ import java.util.Set;
 @Setter
 @Entity
 @ToString
-@Builder
+//@Builder
 public class Localidad extends Base{
 
     private String nombre;

@@ -26,7 +26,7 @@ public class ArticuloInsumo extends Articulo{
     @ManyToMany(mappedBy = "articulosInsumos")
     private Set<Promocion> estaEnPromociones;
 
-    @Builder
+/*    @Builder
     public ArticuloInsumo(Imagen imagen, UnidadMedida unidadMedida, Categoria categoria, String denominacion, Double precioCompra, Double precioVenta, Integer stockActual, Integer stockMaximo, Boolean esParaElaborar, Set<Promocion> estaEnPromociones) {
         super(imagen, unidadMedida, categoria);
         this.denominacion = denominacion;
@@ -36,5 +36,5 @@ public class ArticuloInsumo extends Articulo{
         this.stockMaximo = stockMaximo;
         this.esParaElaborar = esParaElaborar;
         this.estaEnPromociones = estaEnPromociones;
-    }
+    }*/
 }

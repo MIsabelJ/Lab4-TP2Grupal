@@ -18,7 +18,7 @@ import java.util.Set;
 @Setter
 @Entity
 @ToString
-@Builder
+//@Builder
 public class Pedido extends Base{
 
     private LocalTime horaEstimadaFinalizacion;

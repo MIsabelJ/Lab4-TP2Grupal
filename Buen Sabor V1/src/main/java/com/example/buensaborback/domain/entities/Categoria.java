@@ -11,7 +11,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Builder
+//@Builder
 public class Categoria extends Base{
 
     private String denominacion;

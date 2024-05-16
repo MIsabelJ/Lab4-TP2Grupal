@@ -12,7 +12,7 @@ import java.util.Set;
 @Setter
 @Entity
 @ToString
-@Builder
+//@Builder
 public class Empresa extends Base{
 
     private String nombre;

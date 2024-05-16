@@ -13,7 +13,7 @@ import java.util.Set;
 @Setter
 @Entity
 @ToString
-@Builder
+//@Builder
 public class Pais extends Base{
 
     private String nombre;

@@ -13,7 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Builder
+//@Builder
 public class Sucursal extends Base{
 
     private String nombre;

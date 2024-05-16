@@ -14,5 +14,4 @@ public class ImagenFacadeImp extends BaseFacadeImp<Imagen, ImagenDto, ImagenCrea
     public ImagenFacadeImp(BaseService<Imagen, Long> baseService, BaseMapper<Imagen, ImagenDto, ImagenCreateDto, ImagenCreateDto> baseMapper) {
         super(baseService, baseMapper);
     }
-
 }
