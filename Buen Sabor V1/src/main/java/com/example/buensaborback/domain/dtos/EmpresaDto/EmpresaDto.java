@@ -1,6 +1,7 @@
 package com.example.buensaborback.domain.dtos.EmpresaDto;
 
 import com.example.buensaborback.domain.dtos.BaseDto;
+import com.example.buensaborback.domain.dtos.LocalidadDto.LocalidadDto;
 import com.example.buensaborback.domain.entities.Localidad;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,5 +17,5 @@ public class EmpresaDto extends BaseDto {
     private Integer numero;
     private Integer cp;
 
-    private Long localidad;
+    private LocalidadDto localidad;
 }
