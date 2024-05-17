@@ -71,6 +71,7 @@ public class BuenSaborBackApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BuenSaborBackApplication.class, args);
+        System.out.println("ESTOY VIVO");
     }
 
 /*
