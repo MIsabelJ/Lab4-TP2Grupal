@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/ArticuloInsumo")
+@RequestMapping("/articulo-insumo")
 @CrossOrigin("*")
 public class ArticuloInsumoController extends BaseControllerImp<ArticuloInsumo, ArticuloInsumoDto, ArticuloInsumoCreateDto, ArticuloInsumoCreateDto, Long, ArticuloInsumoFacadeImp> {
     public ArticuloInsumoController(ArticuloInsumoFacadeImp facade) {

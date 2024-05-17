@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/Provincia")
+@RequestMapping("/provincia")
 @CrossOrigin("*")
 public class ProvinciaController extends BaseControllerImp<Provincia, ProvinciaDto, ProvinciaCreateDto, ProvinciaCreateDto, Long, ProvinciaFacadeImp> {
     public ProvinciaController(ProvinciaFacadeImp facade) {

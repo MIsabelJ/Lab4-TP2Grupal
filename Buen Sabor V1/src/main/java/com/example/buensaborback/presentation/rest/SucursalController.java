@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/Sucursal")
+@RequestMapping("/sucursal")
 @CrossOrigin("*")
 public class SucursalController extends BaseControllerImp<Sucursal, SucursalDto, SucursalCreateDto, SucursalCreateDto, Long, SucursalFacadeImp> {
     public SucursalController(SucursalFacadeImp facade) {

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/ArticuloManufacturado")
+@RequestMapping("/articulo-manufacturado")
 @CrossOrigin("*")
 public class ArticuloManufacturadoController extends BaseControllerImp<ArticuloManufacturado, ArticuloManufacturadoDto, ArticuloManufacturadoCreateDto, ArticuloManufacturadoCreateDto, Long, ArticuloManufacturadoFacadeImp> {
     public ArticuloManufacturadoController(ArticuloManufacturadoFacadeImp facade) {

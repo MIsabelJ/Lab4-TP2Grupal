@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/Domicilio")
+@RequestMapping("/domicilio")
 @CrossOrigin("*")
 public class DomicilioController extends BaseControllerImp<Domicilio, DomicilioDto, DomicilioCreateDto, DomicilioCreateDto, Long, DomicilioFacadeImp> {
     public DomicilioController(DomicilioFacadeImp facade) {
