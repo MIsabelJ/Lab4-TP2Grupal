@@ -16,5 +16,5 @@ import java.util.Set;
 public class EmpresaCreateDto {
     private String nombre;
     private String razonSocial;
-    private Integer cuil;
+    private Long cuil;
 }
