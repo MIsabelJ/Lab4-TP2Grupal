@@ -6,7 +6,9 @@ import com.example.buensaborback.domain.dtos.BaseDto;
 import com.example.buensaborback.domain.entities.Base;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public abstract class BaseFacadeImp <E extends Base,D extends BaseDto, DC, DE,ID extends Serializable> implements BaseFacade<D,DC,DE,ID>{
@@ -54,5 +56,14 @@ public abstract class BaseFacadeImp <E extends Base,D extends BaseDto, DC, DE,ID
         var entityUpdateByMapper = baseMapper.toUpdate(entityToUpdate, request);
         var entityUpdatedByService = baseService.update(entityUpdateByMapper, id);
         return baseMapper.toDTO(entityUpdatedByService);
+    }
+
+    //Metodo para los casos en los que se recibe una lista de IDs
+    public List<D> getAllById(List<ID> listId){
+        Set<E> entityList = baseService.getAllById(listId);
+        return entityList
+                .stream()
+                .map(baseMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }

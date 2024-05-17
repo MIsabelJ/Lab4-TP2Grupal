@@ -5,4 +5,5 @@ import com.example.buensaborback.domain.dtos.ArticuloManufacturadoDto.ArticuloMa
 import com.example.buensaborback.domain.dtos.ArticuloManufacturadoDto.ArticuloManufacturadoDto;
 
 public interface ArticuloManufacturadoFacade extends BaseFacade<ArticuloManufacturadoDto, ArticuloManufacturadoCreateDto, ArticuloManufacturadoCreateDto, Long> {
+    ArticuloManufacturadoDto addPromocion(Long idArticuloManufacturado,Long idPromocion);
 }

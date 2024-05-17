@@ -4,7 +4,10 @@ import com.example.buensaborback.repositories.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public abstract class BaseServiceImp<E extends Base,ID extends Serializable> implements BaseService<E, ID> {
@@ -45,5 +48,16 @@ public abstract class BaseServiceImp<E extends Base,ID extends Serializable> imp
         }
         var newEntity = baseRepository.save(request);
         return newEntity;
+    }
+    @Override
+    public Set<E> getAllById(List<ID> listId){
+        Set<E> entityList = new HashSet<>();
+        for (int i = 0; i < listId.size(); i++){
+                var actualEntity = baseRepository.getById(listId.get(i));
+                if (actualEntity != null){
+                    entityList.add(actualEntity);
+                }
+        }
+        return entityList;
     }
 }
