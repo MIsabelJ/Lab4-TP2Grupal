@@ -5,4 +5,5 @@ import com.example.buensaborback.domain.dtos.CategoriaDto.CategoriaCreateDto;
 import com.example.buensaborback.domain.dtos.CategoriaDto.CategoriaDto;
 
 public interface CategoriaFacade extends BaseFacade<CategoriaDto, CategoriaCreateDto, CategoriaCreateDto, Long> {
+    CategoriaDto addSucursal(Long idCategoria, Long idSucursal);
 }
