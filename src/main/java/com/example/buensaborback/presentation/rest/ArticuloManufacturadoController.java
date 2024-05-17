@@ -1,5 +1,6 @@
 package com.example.buensaborback.presentation.rest;
 
+import com.example.buensaborback.business.facade.ArticuloManufacturadoFacade;
 import com.example.buensaborback.business.facade.Imp.ArticuloManufacturadoFacadeImp;
 import com.example.buensaborback.business.service.Imp.ArticuloManufacturadoServiceImp;
 import com.example.buensaborback.domain.dtos.ArticuloManufacturadoDto.ArticuloManufacturadoCreateDto;
@@ -19,13 +20,21 @@ public class ArticuloManufacturadoController extends BaseControllerImp<ArticuloM
     }
 
     @Autowired
-    private ArticuloManufacturadoServiceImp articuloManufacturadoService;
-    @PostMapping("/{idArticuloManufacturado}/promociones/{idPromocion}")
-    public ResponseEntity<ArticuloManufacturado> addPromocion(
+    private ArticuloManufacturadoFacade articuloManufacturadoFacade;
+    @PostMapping("/{idArticuloManufacturado}/insumos/{idArticuloInsumo}")
+    public ResponseEntity<ArticuloManufacturadoDto> addArticuloInsumo(
+            @PathVariable Long idArticuloManufacturado,
+            @PathVariable Long idArticuloInsumo) {
+
+        ArticuloManufacturadoDto updatedArticuloManufacturadoDto = articuloManufacturadoFacade.addArticuloInsumo(idArticuloManufacturado, idArticuloInsumo);
+        return ResponseEntity.ok(updatedArticuloManufacturadoDto);
+    }
+    @PostMapping("/{idArticuloManufacturado}/articulo-insumo/{idPromocion}")
+    public ResponseEntity<ArticuloManufacturadoDto> addPromocion(
             @PathVariable Long idArticuloManufacturado,
             @PathVariable Long idPromocion) {
 
-        ArticuloManufacturado updatedArticuloManufacturado = articuloManufacturadoService.addPromocion(idArticuloManufacturado, idPromocion);
-        return ResponseEntity.ok(updatedArticuloManufacturado);
+        ArticuloManufacturadoDto updatedArticuloManufacturadoDto = articuloManufacturadoFacade.addPromocion(idArticuloManufacturado, idPromocion);
+        return ResponseEntity.ok(updatedArticuloManufacturadoDto);
     }
 }

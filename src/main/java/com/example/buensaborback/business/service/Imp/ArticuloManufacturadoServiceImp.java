@@ -22,4 +22,12 @@ public class ArticuloManufacturadoServiceImp extends BaseServiceImp<ArticuloManu
         return  articuloManufacturado;
     }
 
+    @Override
+    public ArticuloManufacturado addArticuloInsumo(Long idArticuloManufacturado, Long idArticuloInsumo){
+        ArticuloManufacturado articuloManufacturado = articuloManufacturadoRepository.findWithArticuloInsumoById(idArticuloManufacturado);
+        articuloManufacturado.getEstaEnPromociones().add(promocionService.getById(idArticuloInsumo));
+        return  articuloManufacturado;
+    }
+
+
 }

@@ -25,7 +25,7 @@ public class Sucursal extends Base{
     // RELACIONES
 
     // Domicilio
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Domicilio domicilio;
 
     // Empresa

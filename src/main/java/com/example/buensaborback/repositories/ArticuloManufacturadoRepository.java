@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface ArticuloManufacturadoRepository extends BaseRepository<ArticuloManufacturado,Long> {
     @Query("SELECT e FROM ArticuloManufacturado e LEFT JOIN FETCH e.estaEnPromociones WHERE e.id = :id")
     ArticuloManufacturado findWithPromocionesById(@Param("id") Long id);
+    @Query("SELECT e FROM ArticuloManufacturado e LEFT JOIN FETCH e.articulosInsumos WHERE e.id = :id")
+    ArticuloManufacturado findWithArticuloInsumoById(@Param("id") Long id);
 }

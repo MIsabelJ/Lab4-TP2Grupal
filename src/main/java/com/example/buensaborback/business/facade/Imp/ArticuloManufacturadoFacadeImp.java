@@ -6,6 +6,7 @@ import com.example.buensaborback.business.mapper.ArticuloManufacturadoMapper;
 import com.example.buensaborback.business.mapper.BaseMapper;
 import com.example.buensaborback.business.service.ArticuloManufacturadoService;
 import com.example.buensaborback.business.service.Base.BaseService;
+import com.example.buensaborback.business.service.Imp.ArticuloManufacturadoServiceImp;
 import com.example.buensaborback.domain.dtos.ArticuloManufacturadoDto.ArticuloManufacturadoCreateDto;
 import com.example.buensaborback.domain.dtos.ArticuloManufacturadoDto.ArticuloManufacturadoDto;
 import com.example.buensaborback.domain.entities.ArticuloManufacturado;
@@ -25,5 +26,9 @@ public class ArticuloManufacturadoFacadeImp extends BaseFacadeImp<ArticuloManufa
     @Override
     public ArticuloManufacturadoDto addPromocion(Long idArticuloManufacturado, Long idPromocion){
         return articuloManufacturadoMapper.toDTO(articuloManufacturadoService.addPromocion(idArticuloManufacturado, idPromocion));
+    }
+    @Override
+    public ArticuloManufacturadoDto addArticuloInsumo(Long idArticuloManufacturado, Long idArticuloInsumo){
+        return articuloManufacturadoMapper.toDTO(articuloManufacturadoService.addPromocion(idArticuloManufacturado, idArticuloInsumo));
     }
 }
