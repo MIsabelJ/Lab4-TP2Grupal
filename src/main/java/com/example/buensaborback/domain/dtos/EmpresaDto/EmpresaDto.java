@@ -15,7 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class EmpresaDto extends BaseDto {
-    private String calle;
-    private Integer numero;
-    private Integer cp;
+    private String nombre;
+    private String razonSocial;
+    private Integer cuil;
 }
